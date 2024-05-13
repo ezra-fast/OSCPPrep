@@ -1,5 +1,6 @@
 #!/bin/bash
 # A script to enumerate Linux systems for privilege escalation vectors; no color coding; there are C and Bash examples at the bottom
+# Practice these techniques on the following THM Box: Linux Priv Esc Playground
 : <<'END_COMMENT'
 Other helpful tools to use in conjunction with this script:
     - https://gtfobins.github.io/
