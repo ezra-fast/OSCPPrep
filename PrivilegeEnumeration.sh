@@ -77,7 +77,7 @@ commands=(					# this is a list of your standard initial checks
 stillLookingCommands=(			# these are for digging a little deeper
 	"pspy64"
 	"netstat -antp"
-	"linenum.sh, linuxprivchecker.py, linux-exploit-suggester.sh"
+	"linenum.sh, linuxprivchecker.py, linux-exploit-suggester.sh, lse.sh"
 	"showmount -e <victimIP>"
 	"systemctl list-timers all"
 	"locate password | more"
