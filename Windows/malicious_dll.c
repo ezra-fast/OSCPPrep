@@ -1,4 +1,5 @@
 // This is a malicious DLL that can be used to execute arbitrary commands on the local system
+// If you are replacing a missing DLL in a writable directory, this dll must have the same name as the missing library!
 
 // For x64 compile with: x86_64-w64-mingw32-gcc windows_dll.c -shared -o output.dll
 // For x86 compile with: i686-w64-mingw32-gcc windows_dll.c -shared -o output.dll
