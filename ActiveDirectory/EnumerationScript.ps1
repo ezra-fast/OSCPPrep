@@ -4,13 +4,13 @@
 # 	- LDAPSearch -LDAPQuery "samAccountType=805306368"		(enumerate users)
 # 	- LDAPSearch -LDAPQuery "objectclass=group"			(enumerate groups)
 #
-# Enumerating all groups and their user members:
+# Enumerating all groups:
 # foreach ($group in $(LDAPSearch -LDAPQuery "(objectCategory=group)")) {
 # $group.properties | select {$_.cn}, {$member}
 # }
 #
 # Enumerating all members in a specific group
-# $group = LDAPSearch -LDAPQuery "(&(objectCategory=group)(cn<group-name>*))"
+# $group = LDAPSearch -LDAPQuery "(&(objectCategory=group)(cn=<group-name>*))"
 # $group.properties.member
 
 function LDAPSearch {		# this function queries AD based on parameter 1, which should be a search filter such as: "samAccountType=805306368" or "name=<username>"
@@ -22,11 +22,10 @@ function LDAPSearch {		# this function queries AD based on parameter 1, which sh
 	$DistinguishedName = ([adsi]'').distinguishedName
 
 	$DirectoryEntry = New-Object System.DirectoryServices.DirectoryEntry("LDAP://$PDC/$DistinguishedName")
-	$DirectorySearcher = New-Object System.DirectoryServices.DirectorySearcher($DirectoryEntry, $LDAPQuery)
+	$DirectorySearcher = New-Object System.DirectoryServices.DirectorySearcher($DirectoryEntry, $LDAPQuery)			# this is the line performing the actual searching
 
 	return $DirectorySearcher.FindAll()
 }
-
 
 
 
