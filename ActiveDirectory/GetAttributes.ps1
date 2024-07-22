@@ -1,4 +1,4 @@
-# this script will enumerate all attributes of the object filtered for on line 11
+# this script enumerates all attributes of the object filtered for on line 11
 
 $domainObj = [System.DirectoryServices.ActiveDirectory.Domain]::GetCurrentDomain()
 $PDC = $domainObj.PdcRoleOwner.Name
