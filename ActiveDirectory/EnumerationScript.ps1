@@ -5,9 +5,7 @@
 # 	- LDAPSearch -LDAPQuery "objectclass=group"			(enumerate groups)
 #
 # Enumerating all groups:
-# foreach ($group in $(LDAPSearch -LDAPQuery "(objectCategory=group)")) {
-# $group.properties | select {$_.cn}, {$member}
-# }
+# foreach ($group in $(LDAPSearch -LDAPQuery "(objectCategory=group)")) { $group.properties | select {$_.cn}, {$member} }
 #
 # Enumerating all members in a specific group
 # $group = LDAPSearch -LDAPQuery "(&(objectCategory=group)(cn=<group-name>*))"
