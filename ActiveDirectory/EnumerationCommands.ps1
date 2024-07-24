@@ -1,4 +1,4 @@
-# Creating a map of an Active Directory domain:
+# Creating a map of an Active Directory domain from Windows:
 #
 # Users
 # Groups
@@ -6,7 +6,7 @@
 # Domain joined computers
 # Domain joined operating systems
 # machines you can access as Local Administrator
-# Current logon sessions on the domain
+# Current logon sessions on the domain (enumerate this for every user, not just the current one)
 # SPNs (services integrated with AD)
 # Enumerate for GenericAll ActiveDirectoryRights permissions 
 # Enumerate domain shares
